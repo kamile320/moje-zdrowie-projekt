@@ -1,0 +1,9 @@
+- strona/aplikacja www PoC
+- opcjonalnie baza danych przechowująca userów i ich dane (lub dane dla każdego usera lokalnie)
+- działa jak kalendarz badań; wg podanych swoich danych/chorób/stanu zdrowia itp. aplikacja ma wiedzieć jakie badania/leki itp mamy przyjmować w jakich dawkach/odstępach czasowych
+- AI? czy zwykły program? (do ai można użyć api google'a; gemini.)
+	- mozna na www dodać pole do którego można wkleić token, aby każdy mógł swoje api wykorzystywac czy coś
+
+
+strona w trybie offline w sensie ze dane beda sie zapisywac lokalnie na kompie usera , 
+tak ma dzialac jak taki kalendarz. dorzucimy funkcje chat bota ale niech dziala glownie jako zwykly
