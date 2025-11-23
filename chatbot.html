@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatBot</title>
+</head>
+<!-- HTML ChatBot - test1 -->
+<style>
+    body{
+        background-color: rgb(6, 6, 54);
+        color: orange;
+        font-family: Arial;
+    }
+    div {
+        margin: 20px;
+    }
+
+    .input-field,
+    .output-field {
+        width: 100%;
+        max-width: 100%;
+        padding: 12px;
+        margin: 20px 0;
+        box-sizing: border-box;
+    }.input-field {
+        text-align: center;
+        margin-top: 40px;
+    }
+    
+    .output-field {
+        border: 2px solid orange;
+        border-radius: 8px;
+        min-height: 200px;
+        max-height: 600px;
+        overflow-y: auto;
+        background-color: rgba(255, 165, 0, 0.05);
+        color: white;
+    }.output-field .usr_question {
+        color: yellow;
+    }
+    h1 {
+        font-family: Arial;
+        text-align: center;
+    }
+
+    .input-field {
+        width: 100%;
+        max-width: 900px;
+        margin: 80px auto 20px auto;
+        padding: 0 15px;
+        box-sizing: border-box;
+        display: flex;
+        gap: 12px;
+        align-items: center;
+    }
+
+    .input-field input {
+        flex: 1;
+        min-width: 0;
+        padding: 16px 20px;
+        font-size: 18px;
+        background: rgba(255, 165, 0, 0.1);
+        border: 2px solid orange;
+        border-radius: 12px;
+        color: white;
+    }
+
+    .input-field button {
+        padding: 16px 32px;
+        font-size: 18px;
+        background: rgba(255, 165, 0, 0.1);
+        border: 2px solid orange;
+        border-radius: 12px;
+        color: white;
+        cursor: pointer;
+        font-weight: bold;
+        white-space: nowrap;
+        height: fit-content;
+    }
+</style>
+<body>
+    <h1>ChatBot - test1</h1>
+
+
+    <button id="token_entry" onclick="showinput()">Token</button>
+    <div id="token_form" style="display:none; margin-top:10px;">
+        <input type="text" id="api_token" placeholder="Enter API token..." autofocus>
+        <button id="submit_token" onclick="submit_token()">Submit</button>
+        <button id="cancel_token" onclick="close_div()">Cancel</button>
+    </div>
+
+
+    <div id="answers" class="output-field"></div>
+
+
+    <div class="input-field">
+        <input type="text" id="user_input" placeholder="Wpisz swoje pytanie tutaj...">
+        <button id="send_btn">Zapytaj</button>
+    </div>
+
+
+    <script>
+        const tokenEntryBtn = document.getElementById('token_entry');
+        const tokenForm = document.getElementById('token_form');
+        const apiTokenInput = document.getElementById('api_token');
+        
+        let token = '';
+        let user_input = document.getElementById('user_input');
+
+        const send_btn = document.getElementById('send_btn');
+
+        function showinput() {
+            tokenForm.style.display = 'block';
+            apiTokenInput.focus();
+            tokenEntryBtn.style.display = 'none';
+        }
+        function close_div() {
+            tokenForm.style.display = 'none';
+            //apiTokenInput.value = '';
+            tokenEntryBtn.style.display = 'block';
+        }
+        function submit_token() {
+            token = apiTokenInput.value.trim();
+            console.log("Submitted Token:", token);
+            // close
+            tokenForm.style.display = 'none';
+            tokenEntryBtn.style.display = 'block';
+        }
+
+    </script>
+    <script type="module">
+        import { GoogleGenerativeAI } from "https://esm.run/@google/generative-ai";
+
+        async function GeminiGenerateContent(question){
+            let usrquestion = question;
+            user_input.value = '';
+
+            console.log("Pytanie: " + question);
+            const genAI = new GoogleGenerativeAI(token);
+        
+            const model = genAI.getGenerativeModel({ 
+                model: "gemini-2.5-flash"
+            });
+        
+            const result = await model.generateContent(question);
+            const response = result.response;
+            const text = response.text();
+        
+            console.log(text);
+            document.getElementById('answers').innerHTML += "<p class='usr_question'>" +  "<b>[Question]: </b>" + question + "</p><br>";
+            document.getElementById('answers').innerHTML += "<p><b>[Answer]: </b>" + text + "</p><br><br>";
+        }
+
+        send_btn.onclick = () => {GeminiGenerateContent(user_input.value.trim());} 
+
+    </script>
+
+</body>
+</html>
