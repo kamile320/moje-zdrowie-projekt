@@ -1,5 +1,8 @@
 # moje-zdrowie-projekt
 Projekt na HackHeroes 2025 
+Autorzy projektu:
+Jakub Węgrzyn
+Krzysztof Marszałowicz
 
 
 # Aplikacja "Moje Zdrowie"
@@ -20,8 +23,5 @@ Wersja "live" pliku **chatbot.html** - [tutaj](https://kamile320.github.io/moje-
    edukacji lub zawodu.
 
 Co może wykorzystywać:
-- mysql
-- php
-- gemini (własny token do google'a; skrypt w JS)
-- wszystkie dane użytkownika są anonimowe i lokalnie przechowywane
-- działa na bazie [chatbot.html](https://github.com/kamile320/moje-zdrowie-projekt/blob/main/chatbot.html)
+w proof of concept do uruchomienia tej aplikacji mobilnej uzywamy expo
+
