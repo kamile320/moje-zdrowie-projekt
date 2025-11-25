@@ -62,7 +62,7 @@ w proof of concept do uruchomienia tej aplikacji mobilnej uzywamy expo
 Poniższa instrukcja pozwala uruchomić aplikację Moje Zdrowie na dowolnym komputerze (Windows / macOS / Linux).
 Nie potrzeba emulatorów – wystarczy telefon z aplikacją Expo Go (Ios/android). 
 
-Instalacja Node.js
+1.Instalacja Node.js
 
 React Native + Expo wymaga Node.js.
 
@@ -72,7 +72,8 @@ https://nodejs.org/en/download
 
 Po instalacji sprawdzić w terminalu / PowerShell:
 
-node -v
+node -v    a pozniej
+
 npm -v
 
 
@@ -82,7 +83,7 @@ Jeżeli obie komendy zwracają wersję — jest OK.
 
 
 
-Instalacja Expo CLI (narzędzia Expo)
+2.Instalacja Expo CLI (narzędzia Expo)
 
 Expo nie wymaga instalacji globalnej, ale warto doinstalować lokalne narzędzia projektowe:
 
@@ -109,7 +110,7 @@ npm install
 
 
 
-Zainstalować aplikację Expo Go na telefonie
+3.Zainstalować aplikację Expo Go na telefonie
 Android:
 
 Google Play → Expo Go
